@@ -1,0 +1,216 @@
+/*-- navigation --*/
+/*.navbar-default {
+    background: none;
+    border: none;
+    min-height: inherit;
+    margin: 0;
+    float: right;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background: none;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background: none;
+}*/
+.navbar{
+    margin-bottom: 0;
+}
+.navbar-nav > li {
+    margin: 0 9px;
+}
+.navbar-nav > li > a {
+    padding: 15px 16px;
+}
+.navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+.navbar-nav > li > a {
+    line-height: inherit;
+}
+a.nav-stylehead {
+    letter-spacing: 1px;
+    color: #000;
+    font-size: 15px;
+}
+.navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+    color: #FF5722;
+}
+ .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #FF5722;
+}
+ .navbar-nav > li > a {
+    color: #000;
+}
+.agile_short_dropdown {
+    border-radius: 0;
+    background: #ffffff;
+    text-align: center;
+	padding:0;
+	border: none;
+}
+.agile_short_dropdown li a {
+    color: #545454;
+    font-size: 13px;
+    padding: .8em 0;
+    border-bottom: 1px solid #ececef;
+    letter-spacing: 1px;
+}
+.agile_short_dropdown > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    color:#FF5722;
+}
+.multi-gd-img img {
+    margin-top: 60px;
+}
+/*-- navigation-dropdown --*/
+ul.multi-column-dropdown li {
+    list-style-type: none;
+    line-height: 2.5em;
+}
+ul.multi-column-dropdown li a {
+    text-decoration:none;
+    font-size: 0.9em;
+    color: #545454;
+    letter-spacing: 1px;
+}
+ul.multi-column-dropdown li a:hover{
+	color:#FF5722;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #FF5722;
+}
+/*-- //navigation-dropdown --*/
+/* //navigation */
+/*-- cart details--*/
+.dropdown-menu.columns-3 {
+   min-width: 300px;
+    padding: 30px 30px;
+}
+.multi-gd-img img{
+	width:100%;
+}
+.agile_short_dropdown{
+    min-width: 150% !important;
+    left: 0 !important;
+}
+/*logo*/
+.logo-shoeshop{
+    padding: 10px;
+    margin-left: 20%;
+   
+}
+.logo-shoeshop a{
+   
+    color: gray;
+}
+/*end logo*/
+/*shopping cart*/
+.cart-shoes{
+    padding-top: 10px;
+        margin-top: 10px;
+    text-align: center;
+}
+.icon-shopingcart{
+    font-size: 26px;
+    padding: 5px 10px;
+    border-radius: 50% 50%;
+    background: red;
+    color: #fff;
+}
+/*end shopping cart*/
+
+/*seach*/
+.agileits_search {
+    margin-top: 16px;
+    float: left;
+    width: 80%;
+}
+.agileits_search input[type="search"]{
+    outline: none;
+    border: 1px solid gray;
+    background: #fff;
+    border-right-color: transparent;
+    color: #191e21;
+    padding: 10px;
+    font-size: 14px;
+	float: left;
+	width:80%;
+	letter-spacing: 1px;
+}
+.agileits_search .btn-default {
+    border: none;
+    width:60px;
+    height: 42px;
+    outline: none;
+    box-shadow: none;
+    background: red;
+    padding: 0;
+    border-radius: inherit;
+    -webkit-appearance: none;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    transition: .5s all;
+}
+.agileits_search .btn-default:hover {
+	background:#FF5722;
+}
+.agileits_search span {
+    color: #fff;
+}
+#agileinfo_search {
+    padding: 9.5px 2px;
+}
+.agileits-navi_search {
+	float: left;
+	width: 23%;
+}
+#agileinfo-nav_search {
+    outline: none;
+    border: none;
+    color: #000;
+    font-size: 14px;
+    background: #f3f3f3;
+	padding:15px 10px;
+	width:100%;
+	letter-spacing: 1px;
+}
+/*-- //search --*/
+/*top selling products*/
+.banner-top-product{
+    background: #eeeeec;
+}
+
+.banner-top-selling {
+    text-align: center;
+} 
+.banner-top-selling  img{
+    max-height: 200px;
+}
+/*end top selling product*/
+/*content topselling*/
+.heading-tittle{
+    text-align: center;
+/*    font-size: 30px;*/
+    padding: 10px;
+}
+.heading-tittle  h3{
+    padding-bottom: 0px !important;
+}
+
+.btn-add-cart{
+    width: 100%;
+}
+.simpleCart_shelfItem{
+    margin-bottom: 20px;
+}
+.info-product-price{
+    padding: 0;
+}
+.men-thumb-item > img{
+    width: 100%;
+    
+}
+/*end content top selling*/
