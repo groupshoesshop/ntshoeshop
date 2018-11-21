@@ -21,7 +21,7 @@
          </div>
          <div class="col-md-4">
              <div class="cart-shoes">
-                 <a href="${pageContext.request.contextPath}/cart"><span class="icon-shopingcart" ><i class="glyphicon glyphicon-shopping-cart"></i></span><span style="margin-left: 5px;">0 sản phẩm</span></a>
+                 <a href="${pageContext.request.contextPath}/cart"><span class="icon-shopingcart" ><i class="glyphicon glyphicon-shopping-cart"></i></span><span style="margin-left: 5px;">${quantityItem} sản phẩm</span></a>
              </div>
          </div>
      </div>   
@@ -45,7 +45,7 @@
               <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav menu__list">
                       <li class="active">
-                          <a class="nav-stylehead" href="index.html">Home
+                          <a class="nav-stylehead" href="${pageContext.request.contextPath}">Home
                               <span class="sr-only">(current)</span>
                           </a>
                       </li>

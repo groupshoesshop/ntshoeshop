@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends CrudRepository<ProductEntity, Integer>{
     
 //    @Query("SELECT p FROM ProductEntity p ORDER BY p.productId DESC")
-//    List<ProductEntity> findAllOrderByProductIdDesc();
+    List<ProductEntity> findAllByOrderByProductIdDesc();
     
-    List<ProductEntity> findTop8OByOrderByProductIdDesc();
+    List<ProductEntity> findTop8ByOrderByProductIdDesc();
 }

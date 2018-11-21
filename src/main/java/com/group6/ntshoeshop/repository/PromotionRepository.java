@@ -2,7 +2,7 @@ package com.group6.ntshoeshop.repository;
 
 
 import com.group6.ntshoeshop.entites.PromotionsEntity;
-import java.util.Date;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

@@ -71,4 +71,11 @@
 .toal-price{
     text-align: right;
 }
+
+/*    remove up/down arrow input number*/
+.item-quantity::-webkit-inner-spin-button, 
+.item-quantity::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 /*end cart manager*/ 

@@ -23,8 +23,8 @@
       
               <div class="product-sec1">
                   <div class="heading-tittle">
-                     <h3 class="heading-tittle">Giày da nam</h3>
-                    
+                     <h3 class="heading-tittle">Tất cả sản phẩm</h3>
+                     
                   </div>
                   <div class="seach-price">
                       <h4 style="padding-right: 10px;">SẮP XẾP THEO:  </h4>
@@ -44,18 +44,30 @@
                                       <img src="${pageContext.request.contextPath}/resources/images/${product.image1}" alt="${product.productName}">
                                       <div class="men-cart-pro">
                                           <div class="inner-men-cart-pro">
-                                              <a href="${pageContext.request.contextPath}/product/${product.productName}${product.productId}" class="link-product-add-cart">Quick View</a>
+                                              <a href="${pageContext.request.contextPath}/product/${product.productId}" class="link-product-add-cart">Quick View</a>
                                           </div>
                                       </div>
-                                      <span class="product-new-top">Bán chạy</span>
+                                      
+                                      <c:if test="${product.discount != null}">
+                                          <span class="product-new-top">Sell ${product.percent} %</span>
+                                      </c:if>
                                   </div>
                                   <div class="item-info-product ">
                                       <h4>
                                           <a href="${pageContext.request.contextPath}/product/${product.productName}${product.productId}">${product.productName}</a>
                                       </h4>
                                       <div class="info-product-price">
-                                          <span class="item_price">${product.unitprice}</span>
-                                          <del>${product.unitprice}</del>
+                                          
+                                          <c:if test="${product.discount != null}">
+                                              <span class="item_price">${product.discount}</span>
+                                                <del>${product.price}</del>
+                                          </c:if>
+                                          <c:if test="${product.discount == null}">
+                                              <span class="item_price">${product.price}</span>
+                                              
+                                                
+                                          </c:if>
+                                          
                                       </div>
                                       <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                           <form action="#" method="post">

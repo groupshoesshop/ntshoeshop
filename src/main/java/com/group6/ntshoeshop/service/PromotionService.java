@@ -14,6 +14,7 @@ public class PromotionService {
     @Autowired
     private PromotionRepository promotionRepo;
     
+    //find infomation promotion in currendate
     public PromotionsEntity getPromotion(){
         Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

@@ -1,5 +1,6 @@
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,44 +31,25 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Rocky chukka Boots BO05008</td>
-                                <td>Nâu</td>
-                                <td>38</td>
-                                <td><input type="number" value="1" style="width: 20%" /></td>
-                                <td><span>690,000đ</span></td>
-                                <td  style="text-align: right;"><button type="submit" class="btn btn-warning btn-delete-cart">Xóa</button></td>
-                            </tr>
-                            <tr>
-                                <td>Rocky chukka Boots BO05008</td>
-                                <td>Nâu</td>
-                                <td>38</td>
-                                <td><input type="number" value="1" style="width: 20%" /></td>
-                                <td><span>690,000đ</span></td>
-                                <td style="text-align: right;"><button type="submit" class="btn btn-warning btn-delete-cart">Xóa</button></td>
-                            </tr>
-                            <tr>
-                                <td>Rocky chukka Boots BO05008</td>
-                                <td>Nâu</td>
-                                <td>38</td>
-                                <td><input type="number" value="1" style="width: 20%" /></td>
-                                <td><span>690,000đ</span></td>
-                                <td style="text-align: right;"><button type="submit" class="btn btn-warning btn-delete-cart">Xóa</button></td>
-                            </tr>
-                            <tr>
-                                <td>Rocky chukka Boots BO05008</td>
-                                <td>Nâu</td>
-                                <td>38</td>
-                                <td><input type="number" value="1" style="width: 20%" /></td>
-                                <td><span>690,000đ</span></td>
-                                <td style="text-align: right;"><button type="submit" class="btn btn-warning btn-delete-cart">Xóa</button></td>
-                            </tr>
+                        <tbody> 
+                            <c:if test="${cartItem != null}">
+                                <c:forEach var="item" items="${cartItem}">
+                                    <tr>
+                                        <td class="product" data-product="${item.productId}">${item.productName}</td>
+                                        <td class="color" data-color="${item.colorId}">${item.colorName}</td>
+                                        <td class="size"  data-size="${item.sizeId}">${item.sizeName}</td>
+                                        <td><input type="number" class="item-quantity" value="${item.quantity}" style="width: 20%; text-align: center;"  /></td>
+                                        <td><span class="item-price">${item.price} đ</span></td>
+                                        <td style="text-align: right;"><button type="submit" class="btn btn-warning btn-delete-cart">Xóa</button></td>
+                                    </tr>
+                                </c:forEach>
+                            </c:if>
+                            
                             
                         </tbody>
                     </table>
                     <div class="">
-                        <h4 class="toal-price">Tổng Tiền: <span style="color: red;">690,000đ</span></h4>
+                        <h4 class="toal-price" id="totalPrice">Tổng Tiền: <span id="totalPrice" style="color: red;"></span></h4>
                     </div>
                 </div>
                 <div class="col-md-4">
