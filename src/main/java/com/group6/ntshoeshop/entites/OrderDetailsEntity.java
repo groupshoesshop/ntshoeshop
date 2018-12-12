@@ -2,8 +2,6 @@
 package com.group6.ntshoeshop.entites;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

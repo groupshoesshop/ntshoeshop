@@ -22,10 +22,12 @@ public class UsersEntity implements Serializable{
     private int userId;
     private String email;
     private String name;
+    private String address;
+    private String phonenumber;
     private String password;
     private String birthday;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "roleId")
     private UserRoleEntity userRoles;
 
@@ -87,6 +89,22 @@ public class UsersEntity implements Serializable{
 
     public void setUserRoles(UserRoleEntity userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
    

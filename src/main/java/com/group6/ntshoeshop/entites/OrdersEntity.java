@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +19,7 @@ public class OrdersEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
     private String customerName;
+    private String email;
     private String address;
     private String phone;
     private String date;
@@ -28,13 +28,7 @@ public class OrdersEntity implements Serializable{
     @JoinColumn(name = "orderId")
     Set<OrderDetailsEntity> orderDetails;
     
-    @OneToOne
-    @JoinColumn(name = "orderId")
-    private PaymentsEntity payments;
-    
-    @OneToOne
-    @JoinColumn(name = "orderId")
-    private ShippingOrdersEntity shippingOrders;
+
 
     public OrdersEntity() {
     }
@@ -87,21 +81,12 @@ public class OrdersEntity implements Serializable{
         this.orderDetails = orderDetails;
     }
 
-    public PaymentsEntity getPayments() {
-        return payments;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPayments(PaymentsEntity payments) {
-        this.payments = payments;
-    }
-
-    public ShippingOrdersEntity getShippingOrders() {
-        return shippingOrders;
-    }
-
-    public void setShippingOrders(ShippingOrdersEntity shippingOrders) {
-        this.shippingOrders = shippingOrders;
-    }
-    
+    public void setEmail(String email) {
+        this.email = email;
+    }  
     
 }

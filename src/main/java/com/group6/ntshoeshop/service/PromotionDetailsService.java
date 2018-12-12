@@ -29,12 +29,9 @@ public class PromotionDetailsService {
     
     
     // câu query đang có vấn đề ================================
-//    public PromotionDetailsEntity getPromotionDetailsOfProductByProduct(){
-//        PromotionsEntity promotion = promotionService.getPromotion();
-//        int promotionId = promotion.getPromotionId();
-//        int ProductId = 9;
-////        ProductEntity product = productService.getProductById(9);
-//        return (PromotionDetailsEntity) promotionDetailsRepo.findByPromotionIdAndProductId(promotionId, ProductId);
+//    public PromotionDetailsEntity getPromotionDetailsOfProductByPromotionAndProduct(PromotionsEntity promotion, ProductEntity product){
+//
+//        return (PromotionDetailsEntity) promotionDetailsRepo.findByPromotionAndProduct(promotion, product);
 //    }
     //===========================================================
     //get list promoting details : lấy được dữ liệu

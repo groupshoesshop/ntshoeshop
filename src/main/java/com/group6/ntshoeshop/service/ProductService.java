@@ -1,6 +1,8 @@
 
 package com.group6.ntshoeshop.service;
 
+import com.group6.ntshoeshop.entites.CategoryProviderEntity;
+import com.group6.ntshoeshop.entites.CategoryTypeEntity;
 import com.group6.ntshoeshop.entites.ProductEntity;
 import com.group6.ntshoeshop.entites.ProductModel;
 import com.group6.ntshoeshop.entites.PromotionDetailsEntity;
@@ -46,6 +48,8 @@ public class ProductService {
        return productRepo.findTop8ByOrderByProductIdDesc();
    }
    
+  
+   
    //get list product promoting
     
     
@@ -84,9 +88,9 @@ public class ProductService {
 //    }
     
     //get all product selling and not sell
-    public List<ProductModel> getListProducts(PromotionsEntity promotion){
+    public List<ProductModel> getListProducts(PromotionsEntity promotion, List<ProductEntity> listProduct){
 //        PromotionsEntity promotion = promotionService.getPromotion();
-        List<ProductEntity> listProduct = productRepo.findAllByOrderByProductIdDesc();
+//        List<ProductEntity> listProduct = productRepo.findAllByOrderByProductIdDesc();
         List<ProductModel> listModels = new ArrayList<ProductModel>();
         for (int i = 0; i < listProduct.size(); i++) {
             int productId = listProduct.get(i).getProductId();
@@ -103,10 +107,11 @@ public class ProductService {
             try {
                 if (check == true) {
                     String percent = promotion.getAmount();
+                    int PromotionId = promotion.getPromotionId();
                     int IntDiscount = ResultPriceAffterPromotion(price, percent);
                     String discount = formatNumberPrice(IntDiscount);
 
-                    ProductModel productModel = new ProductModel(productId, productName, price, percent, discount, categoryType, categoryProvider, description, image1, image2, image3);
+                    ProductModel productModel = new ProductModel(productId, productName, price, percent, discount, categoryType, categoryProvider, description, image1, image2, image3, PromotionId);
                     listModels.add(productModel);
                     
                    
@@ -148,6 +153,7 @@ public class ProductService {
             String percent = listPromotionDetails.get(i).getPromotion().getAmount();
             int IntDiscount = ResultPriceAffterPromotion(price, percent);
             String discount =  formatNumberPrice(IntDiscount);
+//            listPromotionDetails.get(i).getPromotion().getPromotionId();
             
             ProductModel productModel = new ProductModel(productId, productName, price, percent, discount, categoryType, categoryProvider, description, image1, image2, image3);
             listModels.add(productModel);
@@ -169,20 +175,57 @@ public class ProductService {
         String image1 = product.getImage1();
         String image2 = product.getImage2();
         String image3 = product.getImage3();
-        for (int i = 0; i < listPromotionDetails.size(); i++) {
-            if(listPromotionDetails.get(i).getProduct().getProductId() == productId){
-            String percent = listPromotionDetails.get(i).getPromotion().getAmount();
-            int IntDiscount = ResultPriceAffterPromotion(price, percent);
-            String discount =  formatNumberPrice(IntDiscount);
-            
-            productModel = new ProductModel(productId, productName, price, percent, discount, categoryType, categoryProvider, description, image1, image2, image3);
-            
-            break;
-            }else{
-                productModel = new ProductModel(productId, productName, price, categoryType, categoryProvider, description, image1, image2, image3);
-            }
+        if (null != listPromotionDetails && listPromotionDetails.size() > 0) {
+            for (int i = 0; i < listPromotionDetails.size(); i++) {
+                if (listPromotionDetails.get(i).getProduct().getProductId() == productId) {
+                    String percent = listPromotionDetails.get(i).getPromotion().getAmount();
+                    int IntDiscount = ResultPriceAffterPromotion(price, percent);
+                    String discount = formatNumberPrice(IntDiscount);
+
+                    productModel = new ProductModel(productId, productName, price, percent, discount, categoryType, categoryProvider, description, image1, image2, image3);
+
+                    break;
+                } else {
+                    productModel = new ProductModel(productId, productName, price, categoryType, categoryProvider, description, image1, image2, image3);
+                }
 //            
+            }
+        } else {
+            productModel = new ProductModel(productId, productName, price, categoryType, categoryProvider, description, image1, image2, image3);
+
         }
+        
         return productModel;
     }
+    
+   // list top order
+    public List<ProductEntity> getListTopOrders(){
+       return productRepo.findProductByTopOrders();
+    }
+    
+    //save product
+    public void saveProduct(ProductEntity product){
+        
+        productRepo.save(product);
+    }
+    //    ========================================================================
+//    Product by CategoryId
+    
+    public List<ProductEntity> getProductByCategoryTypeId(CategoryTypeEntity categoryType){
+    
+        List<ProductEntity> listProducts = productRepo.findByCategoryType(categoryType);
+        
+        return listProducts;
+    }
+    //  Product by Category Brand
+    
+    public List<ProductEntity> getProductByCategoryBrand(CategoryProviderEntity providerId){
+    
+        List<ProductEntity> listProducts = productRepo.findByCategoryProvider(providerId);
+        
+        return listProducts;
+    }
+    
+
+//    ============================================================================
 }

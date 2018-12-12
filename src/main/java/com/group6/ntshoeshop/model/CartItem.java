@@ -15,6 +15,7 @@ public class CartItem {
     private String sizeName;
     private String price;
     private int quantity;
+    private int promotionId;
 
     public CartItem() {
     }
@@ -94,6 +95,14 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getPromotionId() {
+        return promotionId;
+    }
+
+    public void setPromotionId(int promotionId) {
+        this.promotionId = promotionId;
     }
     
     

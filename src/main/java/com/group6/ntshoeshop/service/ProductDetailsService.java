@@ -23,4 +23,20 @@ public class ProductDetailsService {
         
         return productRepo.getSizeProductByIdAndColorId(productId, colorId);
     }
+    
+    public ProductDetailsEntity getProductDetailsByproductIdAndColorIdAndSizeId(int productId, int colorId, int sizeId){
+        
+        return productRepo.findByProductAndColorAndSize(productId, colorId, sizeId);
+    }
+    
+     //update quantity product
+   public void updateQuantityProduct(int productDetailsId, int quantity){
+       ProductDetailsEntity productDetails = productRepo.findOne(productDetailsId);
+       int soluongcu = productDetails.getQuantity();
+       int newQuantity = soluongcu - quantity;
+       productDetails.setQuantity(newQuantity);
+       productRepo.save(productDetails);  
+   }
+   
+//   
 }

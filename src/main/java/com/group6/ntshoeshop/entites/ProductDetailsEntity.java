@@ -31,7 +31,7 @@ public class ProductDetailsEntity implements Serializable{
     @JoinColumn(name = "sizeId")
     private ProductSizeEntity productSize;
     private String inputDate;
-    private String quantity;
+    private int quantity;
 
     public ProductDetailsEntity() {
     }
@@ -76,13 +76,15 @@ public class ProductDetailsEntity implements Serializable{
         this.inputDate = inputDate;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+   
     
     
 }

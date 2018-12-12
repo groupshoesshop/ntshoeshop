@@ -2,10 +2,21 @@
 
 package com.group6.ntshoeshop.controller;
 
+import com.group6.ntshoeshop.entites.CommentEntity;
 import com.group6.ntshoeshop.entites.ProductDetailsEntity;
+import com.group6.ntshoeshop.entites.ProductEntity;
 import com.group6.ntshoeshop.entites.ProductModel;
+import com.group6.ntshoeshop.entites.RattingEntity;
 import com.group6.ntshoeshop.model.CartItem;
+import com.group6.ntshoeshop.repository.ProductRepository;
+import com.group6.ntshoeshop.service.CommentService;
 import com.group6.ntshoeshop.service.ProductDetailsService;
+import com.group6.ntshoeshop.service.RatingService;
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -24,6 +35,13 @@ public class APIController {
     
     @Autowired(required = true)
     ProductDetailsService productDetailService;
+    @Autowired
+    ProductRepository productRepo;
+    @Autowired
+    RatingService ratingService;
+    @Autowired
+    CommentService commentService;
+
     
     @GetMapping("/get-product-size-by-color")
     @ResponseBody
@@ -40,7 +58,7 @@ public class APIController {
     @ResponseBody
     public String addToCart(@RequestParam int productId, @RequestParam String productName
     ,@RequestParam String price,@RequestParam String colorName,@RequestParam int colorId,
-     @RequestParam String sizeName, @RequestParam int sizeId, HttpSession httpSession){
+     @RequestParam String sizeName, @RequestParam int sizeId, @RequestParam int promotionId, HttpSession httpSession){
        
        if(null == httpSession.getAttribute("cartItem")){
            List<CartItem> listCartItems = new ArrayList<CartItem>() ;
@@ -53,6 +71,7 @@ public class APIController {
            item.setSizeId(sizeId);
            item.setSizeName(sizeName);
            item.setQuantity(1);
+           item.setPromotionId(promotionId);
            listCartItems.add(item); 
            httpSession.setAttribute("cartItem", listCartItems);
        
@@ -70,6 +89,7 @@ public class APIController {
                item.setSizeId(sizeId);
                item.setSizeName(sizeName);
                item.setQuantity(1);
+               item.setPromotionId(promotionId);
                listCartItems.add(item);
            }else{
                int newQuantity = listCartItems.get(location).getQuantity() +1;
@@ -110,5 +130,65 @@ public class APIController {
             int location = checkItemInCart(httpSession, productId, colorId, sizeId);
             listCartItems.remove(location);
         }
+    }
+    
+    @GetMapping("/add-new-rate")
+    @ResponseBody
+    public String addNewRate( @RequestParam int productId, @RequestParam int rate,
+             @RequestParam String customerName,@RequestParam String email,
+             @RequestParam String comment){
+        String html = "";
+        System.out.println(customerName);
+        ProductEntity product = productRepo.findOne(productId);
+        CommentEntity commentEntity = new CommentEntity();
+        commentEntity.setProduct(product);
+        commentEntity.setName(customerName);
+        commentEntity.setEmail(email);        
+        commentEntity.setComment(comment);
+        commentService.saveComment(commentEntity);       
+        CommentEntity getComment = commentService.getCommentDesc();
+        RattingEntity ratting = new RattingEntity();
+        ratting.setProduct(product);
+        ratting.setRate(rate);
+        ratting.setComment(getComment);
+        ratingService.addNewRating(ratting);
+        List<CommentEntity> listComments = commentService.getAllCommentByProduct(product);
+         for (CommentEntity listComment : listComments) {
+             html += "<li class='user-comment'>";
+             html += "<span>Bởi: <span style='font-weight: bold;'>"+listComment.getName()+"</span></span>";
+             html += "<br>" +
+                    "<span>"+listComment.getComment()+"</span>";
+             html += "</li>";
+         }
+//         ByteBuffer htmlByte = StandardCharsets.UTF_8.encode(html);
+//         String value = StandardCharsets.UTF_8.encode();
+        return html;
+    }
+    
+     @GetMapping("/add-new-comment")
+    @ResponseBody
+    public String addNewComment( @RequestParam int productId,
+             @RequestParam String customerName,@RequestParam String email,
+             @RequestParam String comment) throws UnsupportedEncodingException{
+        String html = "";
+        ProductEntity product = productRepo.findOne(productId);
+        CommentEntity commentEntity = new CommentEntity();
+        commentEntity.setProduct(product);
+        commentEntity.setName(customerName);
+        commentEntity.setEmail(email);
+        commentEntity.setComment(comment);
+        commentService.saveComment(commentEntity);       
+        CommentEntity getComment = commentService.getCommentDesc();
+        List<CommentEntity> listComments = commentService.getAllCommentByProduct(product);
+         for (CommentEntity listComment : listComments) {
+             html += "<li  class='user-comment'>";
+             html += "<span>Bởi: <span style='font-weight: bold;'>"+listComment.getName()+"</span></span>";
+             html += "<br>" +
+                    "<span>"+listComment.getComment()+"</span>";
+             html += "</li>";
+         }
+        String value = new String();
+//        ByteBuffer htmlByte = StandardCharsets.UTF_8.encode(html);
+        return html;
     }
 }

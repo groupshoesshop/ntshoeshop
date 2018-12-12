@@ -7,6 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>N&T Shoes Shop</title>
         <jsp:include page="header.jsp" />
     </head>
     <body>
@@ -19,7 +20,7 @@
         <div class="top-selling">
          
 
-          <div class="container">
+            <div class="container detail-more" style="margin-bottom: 20px;">
       
               <div class="product-sec1">
                   <div class="heading-tittle">
@@ -28,17 +29,17 @@
                   </div>
                   <div class="seach-price">
                       <h4 style="padding-right: 10px;">SẮP XẾP THEO:  </h4>
-                      <span><a href="">Bán chạy nhất</a></span>
+                      <span><a href="${pageContext.request.contextPath}/product">Tất Cả Sản Phẩm</a></span>
                       <span class="free-space-category">|</span>
-                      <span><a href="">Giảm dần</a></span>
+                      <span><a href="${pageContext.request.contextPath}/product/ascending">Giá Tăng dần</a></span>
                       <span class="free-space-category">|</span>
-                      <span><a href="">Tăng dần</a></span>
+                      <span><a href="${pageContext.request.contextPath}/product/descending">Giá Giảm dần</a></span>
                   </div>
                   
                   <!--product-->
                   <c:if test="${listProducts!=null && fn:length(listProducts)>0}">
                       <c:forEach var="product" items="${listProducts}">
-                          <div class="col-md-3 product-mens">
+                          <div class="col-md-3 col-sm-6 product-mens">
                               <div class="men-pro-item simpleCart_shelfItem">
                                   <div class="men-thumb-item">
                                       <img src="${pageContext.request.contextPath}/resources/images/${product.image1}" alt="${product.productName}">
@@ -70,20 +71,7 @@
                                           
                                       </div>
                                       <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                          <form action="#" method="post">
-                                              <fieldset>
-                                                  <input type="hidden" name="cmd" value="_cart" />
-                                                  <input type="hidden" name="add" value="1" />
-                                                  <input type="hidden" name="business" value=" " />
-                                                  <input type="hidden" name="item_name" value="Almonds, 100g" />
-                                                  <input type="hidden" name="amount" value="149.00" />
-                                                  <input type="hidden" name="discount_amount" value="1.00" />
-                                                  <input type="hidden" name="currency_code" value="USD" />
-                                                  <input type="hidden" name="return" value=" " />
-                                                  <input type="hidden" name="cancel_return" value=" " />
-                                                  <input class="btn btn-info btn-add-cart" type="submit" name="submit" value="Add to cart" class="button" />
-                                              </fieldset>
-                                          </form>
+                                        <a href="${pageContext.request.contextPath}/product/${product.productId}"><button class="btn btn-info btn-add-cart">Xem sản phẩm</button></a>
                                       </div>
 
                                   </div>

@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -39,10 +38,10 @@ public class ProductEntity implements Serializable{
     
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "productId")
-    private Set<ProductDetailsEntity> productDetails;
+    private List<ProductDetailsEntity> productDetails;
     
     @ManyToMany(cascade = CascadeType.ALL)
-        List<PromotionDetailsEntity> listPromotionDetails;
+    List<PromotionDetailsEntity> listPromotionDetails;
     
     
     public ProductEntity() {
@@ -71,7 +70,7 @@ public class ProductEntity implements Serializable{
 //        this.listPromotionDetails = listPromotionDetails;
 //    }
 
-    public ProductEntity(int productId, String productName, CategoryTypeEntity categoryType, CategoryProviderEntity categoryProvider, String description, String image1, String image2, String image3, String unitprice, Set<ProductDetailsEntity> productDetails) {
+    public ProductEntity(int productId, String productName, CategoryTypeEntity categoryType, CategoryProviderEntity categoryProvider, String description, String image1, String image2, String image3, String unitprice, List<ProductDetailsEntity> productDetails, List<PromotionDetailsEntity> listPromotionDetails) {
         this.productId = productId;
         this.productName = productName;
         this.categoryType = categoryType;
@@ -82,7 +81,10 @@ public class ProductEntity implements Serializable{
         this.image3 = image3;
         this.unitprice = unitprice;
         this.productDetails = productDetails;
+        this.listPromotionDetails = listPromotionDetails;
     }
+
+   
 
     
 
@@ -138,19 +140,15 @@ public class ProductEntity implements Serializable{
         this.unitprice = unitprice;
     }
 
-   
-
-   
-
-    public Set<ProductDetailsEntity> getProductDetails() {
+    public List<ProductDetailsEntity> getProductDetails() {
         return productDetails;
     }
 
-    public void setProductDetails(Set<ProductDetailsEntity> productDetails) {
+    public void setProductDetails(List<ProductDetailsEntity> productDetails) {
         this.productDetails = productDetails;
     }
 
-   
+ 
 
     public String getImage1() {
         return image1;

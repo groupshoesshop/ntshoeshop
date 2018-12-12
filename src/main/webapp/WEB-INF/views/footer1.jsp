@@ -39,7 +39,7 @@
                 <div class="col-md-6 sign-gd">
                     <h4>Our <span>Information</span> </h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="${pageContext.request.contextPath}">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="404.html">Services</a></li>
                         <li><a href="404.html">Short Codes</a></li>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="address-right">
                                 <h6>Email Address</h6>
-                                <p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+                                <p>Email :<a href="mailto:ntshoeshop@gmail.com"> ntshoeshop@gmail.com</a></p>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="address-right">
                                 <h6>Location</h6>
-                                <p>Broome St, NY 10002,California, USA.
+                                <p>Hải Châu, Đà Nẵng, Việt Nam.
 
                                 </p>
                             </div>
@@ -90,7 +90,7 @@
         </div>
         <div class="clearfix"></div>
 
-        <p class="copy-right-w3ls-agileits">&copy 2018 Downy Shoes. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        <p class="copy-right-w3ls-agileits">&copy 2018 Group 6. All rights reserved | Design by <a href="${pageContext.request.contextPath}"> Group 6 | iVietTech.vn</a></p>
     </div>
 </div>
 

@@ -1,18 +1,41 @@
-/*-- navigation --*/
-/*.navbar-default {
-    background: none;
-    border: none;
-    min-height: inherit;
-    margin: 0;
+
+@media screen and (max-width: 768px) {
+    .col-xs-hidden  {
+        display: none;
+    }
+}
+.fix-top-nav{
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    top: 0;
+    background: black;
+    height: 50px;
+}
+.nav-fixed{
     float: right;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    background: none;
+.nav-fixed li a{
+    color: #9d9d9d;
+    font-weight: bold;
 }
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
-    background: none;
-}*/
+.nav-fixed li  a:hover{
+    color: #fff;
+}
+.nav-fixed li{
+    display: inline-block;
+    padding-right: 20px;
+}
+.dropdown-menu.columns-3 {
+     min-width: 100px;
+    padding: 30px 30px;
+    margin-top: 13px;
+}
+.header-inner{
+    margin-top: 50px;
+    background: #fff;
+}
 .navbar{
     margin-bottom: 0;
 }
@@ -62,6 +85,8 @@ a.nav-stylehead {
     background-color: transparent;
     color:#FF5722;
 }
+
+
 .multi-gd-img img {
     margin-top: 60px;
 }
@@ -85,10 +110,15 @@ ul.multi-column-dropdown li a:hover{
 /*-- //navigation-dropdown --*/
 /* //navigation */
 /*-- cart details--*/
+ul.multi-column-dropdown {
+    padding: 0px 30px;
+    /* margin-top: 10px; */
+}
 .dropdown-menu.columns-3 {
    min-width: 300px;
     padding: 30px 30px;
 }
+
 .multi-gd-img img{
 	width:100%;
 }
@@ -99,7 +129,7 @@ ul.multi-column-dropdown li a:hover{
 /*logo*/
 .logo-shoeshop{
     padding: 10px;
-    margin-left: 20%;
+    text-align: center;
    
 }
 .logo-shoeshop a{
@@ -120,63 +150,60 @@ ul.multi-column-dropdown li a:hover{
     background: red;
     color: #fff;
 }
+.quantity-cart-items{
+    color: #fff;
+    font-size: 16px;
+    position: relative;
+    right: 10px;
+    top: 10px;
+    font-weight: bold;
+}
+.cart-items{
+    font-size: 25px;
+    top: 6px;
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 7px;
+    background: red;
+    position: relative;
+}
 /*end shopping cart*/
 
 /*seach*/
-.agileits_search {
-    margin-top: 16px;
+form.example{
+    text-align: center;
+}
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
     float: left;
     width: 80%;
+    background: #f1f1f1;
 }
-.agileits_search input[type="search"]{
-    outline: none;
-    border: 1px solid gray;
-    background: #fff;
-    border-right-color: transparent;
-    color: #191e21;
+
+form.example button {
+    float: left;
+    width: 20%;
     padding: 10px;
-    font-size: 14px;
-	float: left;
-	width:80%;
-	letter-spacing: 1px;
-}
-.agileits_search .btn-default {
-    border: none;
-    width:60px;
-    height: 42px;
-    outline: none;
-    box-shadow: none;
     background: red;
-    padding: 0;
-    border-radius: inherit;
-    -webkit-appearance: none;
-    -webkit-transition: .5s all;
-    -moz-transition: .5s all;
-    transition: .5s all;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
 }
-.agileits_search .btn-default:hover {
-	background:#FF5722;
+
+form.example button:hover {
+    background: #C82E31;
 }
-.agileits_search span {
-    color: #fff;
+
+
+.agileits_search {
+        text-align: center;
 }
-#agileinfo_search {
-    padding: 9.5px 2px;
-}
-.agileits-navi_search {
-	float: left;
-	width: 23%;
-}
-#agileinfo-nav_search {
-    outline: none;
-    border: none;
-    color: #000;
-    font-size: 14px;
-    background: #f3f3f3;
-	padding:15px 10px;
-	width:100%;
-	letter-spacing: 1px;
-}
+
 /*-- //search --*/
 /*top selling products*/
 .banner-top-product{
@@ -191,6 +218,11 @@ ul.multi-column-dropdown li a:hover{
 }
 /*end top selling product*/
 /*content topselling*/
+/*navbar*/
+/*.dropdown:hover .dropdown-menu {
+  display: block;
+}*/
+/*end navber*/
 .heading-tittle{
     text-align: center;
 /*    font-size: 30px;*/

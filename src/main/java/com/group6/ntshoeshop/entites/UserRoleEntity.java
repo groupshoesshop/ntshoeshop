@@ -2,11 +2,13 @@
 package com.group6.ntshoeshop.entites;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
 
@@ -17,6 +19,8 @@ public class UserRoleEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int roleId;
     private String roleName;
+    @OneToMany
+    private List<UsersEntity> user;
     
     public UserRoleEntity() {
     }
@@ -40,6 +44,14 @@ public class UserRoleEntity implements Serializable{
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public List<UsersEntity> getUser() {
+        return user;
+    }
+
+    public void setUser(List<UsersEntity> user) {
+        this.user = user;
     }
 
  
